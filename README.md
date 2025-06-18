@@ -1,29 +1,47 @@
 # Any_Chain
-Production Line Process Overview
-This system processes raw materials (open boxes), some of which are fragile, and transforms them into finished products through a series of automated steps.
+🏭 Production Line Process Overview
+This project simulates an automated production line system designed to handle and process different types of boxes, including fragile ones. The system ensures quality, efficiency, and fault-tolerance through smart routing and real-time tracking.
 
-Workflow
-Input: Open boxes arrive on the production line.
+🔄 Workflow
+Input Stage
 
-Fragile boxes are redirected via Conveyor 2 to Machine M1, where they are sealed and labeled "Fragile".
+Open boxes arrive on the production line.
 
-Non-fragile boxes move directly via Conveyor 3 to Machine M2 for sealing.
+Box Classification
 
-Merge & Final Processing:
+Fragile Boxes: Redirected via Conveyor 2 to Machine M1, where they are sealed and labeled "Fragile".
 
-Both sealed box types converge at Machine M3 via Conveyor 3.
+Non-Fragile Boxes: Sent directly via Conveyor 3 to Machine M2 for sealing.
 
-A quality check categorizes them as Conforming or Non-Conforming.
+Merging and Final Processing
 
-Failure Handling
-If issues arise, the system executes 3 corrective actions  and logs them in a database.
+All sealed boxes (fragile and non-fragile) are routed to Machine M3 via Conveyor 3.
 
-Potential Issues
-Machine M1 Failure: Production halts for fragile boxes; fallback protocols activate.
+Machine M3 performs a quality check:
 
-Quality Defects: Automated rejection and root-cause analysis.
+Boxes are classified as Conforming or Non-Conforming.
 
-Performance Tracking
-Inputs: Orders and machine parameters are read from an Excel file.
+⚠️ Failure Handling
+If a problem is detected, the system initiates one or more of the following corrective actions:
+
+Rerouting materials
+
+Recalibrating machines
+
+Triggering alerts and logging the issue in a dedicated database
+
+❗ Potential Issues & Responses
+Machine M1 Failure: Fragile box processing halts; fallback protocols are triggered to ensure traceability and minimize downtime.
+
+Quality Defects: Automatically rejected and subjected to root-cause analysis.
+
+📊 Performance Tracking
+Inputs:
+
+Orders and machine parameters are loaded from an Excel file.
+
+Outputs:
+
+Key Performance Indicators (KPIs) such as throughput, defect rates, and downtime are recorded to an Excel log.
 
 Outputs: Key performance indicators (KPIs) are recorded in an Excel log.
