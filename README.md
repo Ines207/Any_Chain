@@ -50,9 +50,9 @@ All failure events and corrective actions are logged in a dedicated database for
 
 ## ❗ Potential Issues
 
-- **Machine M1 Failure**:
+- **Machine M1 Failure**
 
-- **Quality Defects**:
+- **Quality Defects**
 
  
 ---
