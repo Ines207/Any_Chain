@@ -1,49 +1,80 @@
 # Any_Chain
-🏭 Production Line Process Overview
+# 🏭 Production Line Process Overview
 
-This project simulates an automated production line system designed to handle and process different types of boxes, including fragile ones. The system ensures quality, efficiency, and fault-tolerance through smart routing and real-time tracking.
+This project simulates an automated production line using **AnyLogic**, designed to handle both fragile and non-fragile products. The system showcases intelligent material handling, real-time quality checks, and robust failure management — making it suitable for educational or industrial simulation purposes.
 
-🔄 Workflow
+---
 
-Input Stage
+## 🔄 Workflow
 
-Open boxes arrive on the production line.
+### 1. Input Stage
+- Open boxes (raw materials) arrive on the production line.
 
-Box Classification
+### 2. Box Classification
+- **Fragile Boxes**:
+  - Rerouted via **Conveyor 2** to **Machine M1**.
+  - Sealed and labeled as **"Fragile"**.
 
-Fragile Boxes: Redirected via Conveyor 2 to Machine M1, where they are sealed and labeled "Fragile".
+- **Non-Fragile Boxes**:
+  - Sent directly via **Conveyor 3** to **Machine M2** for sealing.
 
-Non-Fragile Boxes: Sent directly via Conveyor 3 to Machine M2 for sealing.
+### 3. Merge & Final Processing
+- All sealed boxes (fragile and non-fragile) converge at **Machine M3** via **Conveyor 3**.
+- **Machine M3** performs a **quality check**:
+  - Boxes are categorized as **Conforming** or **Non-Conforming**.
 
-Merging and Final Processing
+---
 
-All sealed boxes (fragile and non-fragile) are routed to Machine M3 via Conveyor 3.
+## ⚠️ Failure Handling
 
-Machine M3 performs a quality check:
+In case of failure, especially a **Machine M1 breakdown**, the system applies one of three corrective decisions:
 
-Boxes are classified as Conforming or Non-Conforming.
+### 🔧 D1: Dual Processing with Machine M3
+- The product passes through **Machine M1** as a **pass-through conveyor** (no processing delay).
+- Then, it is processed on **Machine M3** with additional time compensation to cover the missed operation.
+- Machine M1 is reconfigured as a conveyor from **Conveyor 1** to **Machine M3**.
+- M1 processing time is removed; processing time is adjusted on M3.
 
-⚠️ Failure Handling
-If a problem is detected, the system initiates one or more of the following corrective actions:
+### 🔁 D2: Redirect to Machine M2
+- Type 1 products in the queue are **rerouted to Machine M2** if M1 fails.
+- Machine M2 is reconfigured to handle the task with **updated processing time parameters**.
 
-Rerouting materials
+### ⏱️ D3: Prioritize Type 2 Production
+- During M1 downtime, **Type 2 products** are prioritized.
+- Type 1 products waiting in queue are **postponed** until M1 is repaired.
+- Dynamic rescheduling ensures continuity for unaffected product types.
 
-Recalibrating machines
+All failure events and corrective actions are logged in a dedicated database for traceability.
 
-Triggering alerts and logging the issue in a dedicated database
+---
 
-❗ Potential Issues & Responses
-Machine M1 Failure: Fragile box processing halts; fallback protocols are triggered to ensure traceability and minimize downtime.
+## ❗ Potential Issues
 
-Quality Defects: Automatically rejected and subjected to root-cause analysis.
+- **Machine M1 Failure**:
 
-📊 Performance Tracking
-Inputs:
+- **Quality Defects**:
 
-Orders and machine parameters are loaded from an Excel file.
+ 
+---
 
-Outputs:
+## 📊 Performance Tracking
 
-Key Performance Indicators (KPIs) such as throughput, defect rates, and downtime are recorded to an Excel log.
+- **Inputs**:
+  - Orders and machine parameters are imported from an **Excel file**.
 
-Outputs: Key performance indicators (KPIs) are recorded in an Excel log.
+- **Outputs**:
+  - Key Performance Indicators (KPIs) are recorded in a structured **Excel log** for monitoring and analysis.
+
+---
+
+## 🛠️ Tools Used
+
+- [AnyLogic](https://www.anylogic.com/) – For discrete event and agent-based simulation  
+- Excel – For input/output data handling  
+
+---
+
+
+
+
+
