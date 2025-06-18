@@ -1,8 +1,10 @@
 # Any_Chain
 🏭 Production Line Process Overview
+
 This project simulates an automated production line system designed to handle and process different types of boxes, including fragile ones. The system ensures quality, efficiency, and fault-tolerance through smart routing and real-time tracking.
 
 🔄 Workflow
+
 Input Stage
 
 Open boxes arrive on the production line.
